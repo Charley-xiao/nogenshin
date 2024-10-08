@@ -17,6 +17,9 @@ First, make sure you're ready for chaos:
 首先，确保你已经做好迎接混乱的准备：
 
 ```bash
+pip install nogenshin
+
+# Or, if you're feeling adventurous:
 pip install git+https://github.com/Charley-xiao/nogenshin.git
 ```
 
@@ -24,7 +27,7 @@ And, of course, Genshin Impact must already be installed on your system. If it's
 
 当然，你的电脑上必须已经安装了《原神》。如果还没有安装，你为什么不装？《原神》怎么你了？
 
-## Usage
+## Usage 用法
 
 Here's how you can embrace your inner Traveler (and bug-hunter):
 

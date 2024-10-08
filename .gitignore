@@ -1,2 +1,5 @@
 
 /nogenshin/__pycache__
+/build
+/dist
+/nogenshin.egg-info
