@@ -28,6 +28,31 @@ class GenshinLauncher:
                 os.path.expandvars(r"%ProgramFiles%\\Genshin Impact\\GenshinImpact.exe"),
                 os.path.expandvars(r"%ProgramFiles(x86)%\\Genshin Impact\\GenshinImpact.exe"),
             ]
+            try:
+                import winreg
+                reg_path = r"SOFTWARE\\Microsoft\Windows\\CurrentVersion\\Uninstall"
+                with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, reg_path) as key:
+                    i = 0
+                    while True:
+                        try:
+                            subkey_name = winreg.EnumKey(key, i)
+                            subkey_path = f"{reg_path}\\{subkey_name}"
+                            with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, subkey_path) as subkey:
+                                try:
+                                    display_name, _ = winreg.QueryValueEx(subkey, "DisplayName")
+                                    if "Genshin Impact" in display_name:
+                                        install_location, _ = winreg.QueryValueEx(subkey, "InstallLocation")
+                                        genshin_exe = os.path.join(install_location, "GenshinImpact.exe")
+                                        if os.path.exists(genshin_exe):
+                                            return genshin_exe
+                                except FileNotFoundError:
+                                    pass
+                        except OSError:
+                            break
+                        i += 1
+            except FileNotFoundError:
+                pass
+
         elif system == "Darwin":
             possible_paths = [
                 "/Applications/Genshin Impact.app/Contents/MacOS/GenshinImpact",

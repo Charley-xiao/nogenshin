@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="nogenshin",
-    version="0.1.0",
+    version="0.1.1",
     author="Charley Xiao",
     author_email="charleyxiao057@gmail.com",
     description="Genshin, but no Genshin.",
