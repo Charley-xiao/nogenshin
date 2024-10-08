@@ -34,6 +34,10 @@ Here's how you can embrace your inner Traveler (and bug-hunter):
 以下是如何激发你内心旅行者（兼 bug 猎手）灵魂的操作：
 
 ```python
+import os 
+# This is optional. If your game follows this path, you don't need to set it.
+os.environ['GENSHIN_IMPACT_PATH'] = 'C:/Program Files/Genshin Impact/GenshinImpact.exe'
+
 import nogenshin
 
 @nogenshin.start
@@ -92,7 +96,7 @@ A: That’s a 'you' problem.
 
 Q: Is there a way to choose different games?
 
-A: No. You either launch Genshin, or you face your errors alone.
+A: No. You either launch Genshin, or you face your errors alone. Just joking, you can set the `GENSHIN_IMPACT_PATH` environment variable to the path of your game.
 
 问： 这个库能帮我调试代码吗？
 
@@ -108,7 +112,7 @@ A: No. You either launch Genshin, or you face your errors alone.
 
 问： 能选择其他游戏吗？
 
-答： 不行。要么启动原神，要么面对自己那满屏的错误。
+答： 不行。要么启动原神，要么面对自己那满屏的错误。（开玩笑的，你可以设置 `GENSHIN_IMPACT_PATH` 环境变量为你游戏的路径）
 
 ## Disclaimer 免责声明
 
