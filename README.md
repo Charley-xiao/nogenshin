@@ -1,125 +1,110 @@
-# nogenshin 不要原神！
+# nogenshin
+
+[![PyPI package](https://img.shields.io/pypi/v/nogenshin)](https://pypi.org/project/nogenshin/)
+[![Last Commit](https://img.shields.io/github/last-commit/Charley-xiao/nogenshin)](https://github.com/Charley-xiao/nogenshin/commits/master)
 
 Are you a developer who's tired of seeing the same boring errors in your code? Want to turn debugging into an adventure? Look no further—**nogenshin** is here to save the day (and your sanity)!
 
-你是那个已经厌倦了自己代码里那些千篇一律的报错的开发者吗？想把调试代码变成一次冒险之旅吗？别再找了——**nogenshin** 出场拯救你（和你的理智）了！
+---
 
-## What is nogenshin? 什么是不要原神？
+[Repository](https://github.com/Charley-xiao/nogenshin) | [中文 README](https://github.com/Charley-xiao/nogenshin/blob/main/README_zh.md)
 
-`nogenshin` is the Python library you never knew you needed. It's simple: whenever your code throws an error inside a function decorated with `@nogenshin.start`, it will launch **Genshin Impact** instead of leaving you staring at an ugly stack trace. Because if you're going to suffer, you might as well enjoy it!
+---
 
-`nogenshin` 是一个你从未意识到自己需要的 Python 库。它的原理很简单：每当你代码中某个被 `@nogenshin.start` 装饰器装饰的函数抛出错误时，它不会给你显示丑陋的堆栈信息，而是直接启动《原神》。因为，如果注定要受苦，那为什么不选择开心点呢？
+## What is nogenshin?
 
-## Installation 安装
+`nogenshin` is the Python library that transforms your coding errors into epic, open-world fun. Say goodbye to stack traces and hello to Teyvat! When your code blows up, any function wrapped with `@nogenshin.start` will **launch Genshin Impact** and whisk you away from debugging woes.
 
-First, make sure you're ready for chaos:
+And that's not all! With the new `@nogenshin.stop` in `v0.2.0`, you can finally *stop* Genshin when your bugs are getting serious. Yes, you can bring yourself back from your virtual world (but let’s be real, why would you want to?).
 
-首先，确保你已经做好迎接混乱的准备：
+## Installation
+
+Get ready to face your coding challenges head-on (or ignore them while playing Genshin):
 
 ```bash
 pip install nogenshin
 
-# Or, if you're feeling adventurous:
+# Or, if you're feeling extra adventurous (or have Paimon-like energy):
 pip install git+https://github.com/Charley-xiao/nogenshin.git
 ```
 
-And, of course, Genshin Impact must already be installed on your system. If it's not, what are you even doing here?
+**Note**: Genshin Impact must be installed on your system. If it’s not, we can't help you there. Go download it first—priorities, people!
 
-当然，你的电脑上必须已经安装了《原神》。如果还没有安装，你为什么不装？《原神》怎么你了？
+## Usage
 
-## Usage 用法
-
-Here's how you can embrace your inner Traveler (and bug-hunter):
-
-以下是如何激发你内心旅行者（兼 bug 猎手）灵魂的操作：
+### The @nogenshin.start Experience™️
 
 ```python
-import os 
-# This is optional. If your game follows this path, you don't need to set it.
-os.environ['GENSHIN_IMPACT_PATH'] = 'C:/Program Files/Genshin Impact/GenshinImpact.exe'
-
 import nogenshin
 
 @nogenshin.start
 def buggy_function():
-    print("This will probably break...")
+    print("Hold on, this will break...")
     raise ValueError("Oops!")
 
-buggy_function()  # Prepare for adventure if it fails!
+buggy_function()  # Time to journey into Teyvat!
 ```
 
-When an exception happens, instead of fixing the error, nogenshin will fire up Genshin Impact and let you chill in Teyvat while you contemplate your life choices.
+When an error occurs, instead of frantically debugging, **nogenshin** will take you on a nice relaxing trip to the world of Genshin. Perfect timing to roll for a new 5-star character or just go vent your frustration on some slimes.
 
-当你的代码发生异常时，nogenshin 会自动启动《原神》，让你在提瓦特的美景中反思人生选择，而不是盯着报错发呆。
+### The @nogenshin.stop Superpower
 
-## Why? 为什么？
+For when you actually need to, you know, *stop* playing Genshin (tragic, I know):
 
-Why not? Debugging is stressful. Go fight some hilichurls instead. Or go get that 5-star character you’ve been dreaming of while your bugs roam free.
+```python 
+@nogenshin.stop
+def stop_playing():
+    print("This code has issues... stopping Genshin Impact.")
+    raise RuntimeError("Time to get serious!")
 
-为什么不呢？调试代码太压力山大了。去打打丘丘人，放松一下吧！或者去抽你梦寐以求的五星角色，让 bug 自由飞翔。
+stop_playing()  # Back to reality (but why?)
+```
 
-## How It Works 它怎么工作的
+When your code crashes again and you realize maybe you should actually fix something, `@nogenshin.stop` will gasp close Genshin Impact. Yes, I know. It’s painful. But debugging is hard work, and eventually, someone’s got to do it.
 
-Step 1: Write code.
+## Why?
 
-Step 2: Wrap your error-prone functions with `@nogenshin.start`.
+Because life is short, and debugging is long. Why face your errors alone when you could have Paimon by your side?
 
-Step 3: When your code blows up, nogenshin launches Genshin Impact.
+## How It Works
 
-Step 4: ????
+1. Write code (preferably the kind that works).
+2. Wrap your error-prone functions with `@nogenshin.start` or `@nogenshin.stop` (because who needs normal debugging?).
+3. When an exception happens, Genshin Impact either starts or stops.
+4. Embrace the chaos.
+5. Profit (or suffer in silence).
 
-Step 5: Profit (or cry about not getting Zhongli again).
+## FAQ
 
-第一步： 写代码。
+### Q: Will this help me fix my code?
 
-第二步： 用 `@nogenshin.start` 包裹那些容易出问题的函数。
+A: Absolutely not. But you’ll feel better about your life choices.
 
-第三步： 当代码崩溃时，nogenshin 启动《原神》。
+### Q: Why Genshin Impact?
 
-第四步： ????
+A: Why not? Coding errors deserve to be met with an epic game, don’t they?
 
-第五步： 水到渠成（或者继续哭着抱怨抽不到钟离）。
+### Q: What if I actually want to fix my bugs?
 
-## FAQ 常见问题
+A: That’s between you and your error logs. Best of luck.
 
-Q: Will this help me debug my code?
+### Q: Can I choose a different game?
 
-A: Not even a little.
+A: Technically, yes. Set the `GENSHIN_PATH` environment variable to the path of any executable game. But honestly, why would you want to play something else?
 
-Q: Why Genshin Impact?
+### Q: How can I prevent Genshin from starting/stopping?
 
-A: Why not?
+A: Why would you even ask that?
 
-Q: What if I actually want to fix my bugs?
+## Disclaimer
 
-A: That’s a 'you' problem.
+This library is not guaranteed to improve your coding skills. It may reduce productivity by introducing distractions, but will likely enhance your overall mood (especially after you finally get that 5-star pull). Use at your own risk, and don't blame us if you lose track of time and end up adventuring instead of debugging.
 
-Q: Is there a way to choose different games?
+**nogenshin**: Turning your code errors into an adventure, one bug at a time. Now go out there and either code… or lose yourself in Genshin Impact. Your call.
 
-A: No. You either launch Genshin, or you face your errors alone. Just joking, you can set the `GENSHIN_IMPACT_PATH` environment variable to the path of your game.
+## License
 
-问： 这个库能帮我调试代码吗？
+MIT © [Charley Xiao](https://github.com/Charley-xiao)
 
-答： 完全不能。
-
-问： 为什么是《原神》？
-
-答： 为什么不是呢？
-
-问： 如果我真的想修复 bug 怎么办？
-
-答： 那是你的问题，不是我的。
-
-问： 能选择其他游戏吗？
-
-答： 不行。要么启动原神，要么面对自己那满屏的错误。（开玩笑的，你可以设置 `GENSHIN_IMPACT_PATH` 环境变量为你游戏的路径）
-
-## Disclaimer 免责声明
-
-Use at your own risk. This library will absolutely not fix your code. But hey, at least you’ll have fun, right? And yes, this might reduce your productivity. But isn't that what coding is all about?
-
-使用本库请自担风险。nogenshin 绝对不会帮你修复代码。但嘿，至少你可以玩得开心嘛！对，没错，这可能会大大降低你的工作效率。但编程不就是为了快乐吗？
-
-**nogenshin**: Turning every error into an adventure. Now go out there and debug... or pull for characters. Your call.
-
-**nogenshin**：让每一次报错都变成一场冒险。现在去吧，调试代码...还是抽卡，全看你了。
+## Contributing
+Issues and pull requests are welcome! Feel free to contribute and join the madness! 😊

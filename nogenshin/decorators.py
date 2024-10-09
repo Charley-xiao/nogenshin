@@ -4,6 +4,7 @@ import os
 import functools
 import platform
 
+
 class GenshinLauncher:
     def __init__(self, genshin_path=None):
         if genshin_path:
@@ -73,7 +74,9 @@ class GenshinLauncher:
         except Exception as e:
             print(f"Failed to start Genshin Impact: {e}")
 
+
 launcher = None
+
 
 def initialize_launcher(genshin_path=None):
     global launcher
@@ -83,7 +86,9 @@ def initialize_launcher(genshin_path=None):
         launcher = None
         print(f"WARNING: {e}")
 
+
 initialize_launcher()
+
 
 def configure_genshin(path):
     """
@@ -93,9 +98,10 @@ def configure_genshin(path):
     """
     initialize_launcher(genshin_path=path)
 
+
 def start(func):
     """
-    Decorator to start Genshin Impact before running the function.
+    Decorator to start Genshin Impact when func raises an exception.
     """
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
@@ -108,4 +114,23 @@ def start(func):
             else:
                 print("Genshin Impact launcher not configured.")
             raise  
+    return wrapper
+
+
+def stop(func):
+    """
+    Decorator to stop Genshin Impact when func raises an exception.
+    """
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        if launcher:
+            try:
+                subprocess.Popen(["taskkill", "/F", "/IM", os.path.basename(launcher.genshin_path)], shell=True)
+                print("Genshin Impact stopped.")
+            except Exception as e:
+                print(f"Failed to stop Genshin Impact: {e}")
+        else:
+            print("Genshin Impact launcher not configured.")
+        return result
     return wrapper
